@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fancy Blog Post</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>/* Article Image */
+    /* Base Styles */
+:root {
+  --primary-color: #2c3e50;
+  --secondary-color: #ecf0f1;
+  --highlight-color: #3498db;
+  --font-family: 'Arial', sans-serif;
+  --button-hover-color: #2980b9;
+  --link-hover-color: #1abc9c;
+}
+
+/* Global Styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  line-height: 1.6;
+}
+
+.blog-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-top: 50px;
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Header */
+.blog-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.blog-title {
+  font-size: 3rem;
+  margin: 0;
+  color: var(--primary-color);
+  animation: slideInFromLeft 1s ease-out;
+}
+
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.blog-subtitle {
+  font-size: 1.5rem;
+  color: var(--highlight-color);
+  margin-top: 10px;
+  opacity: 0;
+  animation: fadeInSubtitle 1s ease-in-out 0.5s forwards;
+}
+
+@keyframes fadeInSubtitle {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Meta (Author, Date, Time) */
+.blog-meta {
+  font-size: 1rem;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
+
+.blog-meta .author,
+.blog-meta .date-time {
+  font-weight: bold;
+}
+
+.blog-meta span {
+  color: var(--highlight-color);
+}
+
+/* Blog Content */
+.blog-content .intro {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.blog-content .content-body {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 40px;
+}
+
+.blog-content .content-body p {
+  margin-bottom: 20px;
+}
+
+/* Read More Button */
+.cta-btn {
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  background-color: var(--highlight-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cta-btn:hover {
+  background-color: var(--button-hover-color);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer */
+.blog-footer {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--primary-color);
+  margin-top: 20px;
+}
+
+/* Social Share Section */
+.social-share {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.social-icon {
+  background-color: var(--highlight-color);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  background-color: var(--button-hover-color);
+  transform: translateY(-3px);
+}
+
+/* View Other Blog Posts Section */
+.other-blog-posts {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.other-blog-posts h3 {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  opacity: 0;
+  animation: fadeInTitle 1s ease-in-out forwards;
+}
+
+@keyframes fadeInTitle {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.other-posts-list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.other-post {
+  width: 30%;
+  margin-bottom: 30px;
+  opacity: 0;
+  animation: fadeInPost 1s ease-in-out 0.5s forwards;
+}
+
+@keyframes fadeInPost {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.other-post img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.other-post a {
+  font-size: 1.2rem;
+  color: var(--highlight-color);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.other-post a:hover {
+  color: var(--link-hover-color);
+  text-decoration: underline;
+}
+
+.preview-text {
+  font-size: 1rem;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+  opacity: 0;
+  animation: fadeInText 1s ease-in-out 1s forwards;
+}
+
+@keyframes fadeInText {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.read-more-link {
+  font-size: 1rem;
+  color: var(--highlight-color);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.read-more-link:hover {
+  color: var(--link-hover-color);
+  text-decoration: underline;
+}
+
+/* Media Queries for Responsiveness */
+
+/* Mobile Styles */
+@media (max-width: 600px) {
+  .blog-container {
+    padding: 15px;
+    margin-top: 20px;
+  }
+
+  .blog-title {
+    font-size: 2.5rem;
+  }
+
+  .blog-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .blog-meta {
+    font-size: 0.9rem;
+  }
+
+  .blog-content .intro {
+    font-size: 1rem;
+  }
+
+  .blog-content .content-body {
+    font-size: 1rem;
+  }
+
+  .cta-btn {
+    padding: 12px 25px;
+    font-size: 1rem;
+  }
+
+  .social-icons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .other-blog-posts h3 {
+    font-size: 1.2rem;
+  }
+
+  .other-post a {
+    font-size: 1rem;
+  }
+}
+
+/* Tablet Styles */
+@media (max-width: 768px) {
+  .blog-container {
+    padding: 20px;
+  }
+
+  .blog-title {
+    font-size: 2.8rem;
+  }
+
+  .blog-subtitle {
+    font-size: 1.3rem;
+  }
+
+  .cta-btn {
+    padding: 13px 28px;
+    font-size: 1.1rem;
+  }
+}</style>
+</head>
+<body>
+  <div class="blog-container">
+    <header class="blog-header">
+      <h1 class="blog-title">My Fancy Blog Post</h1>
+      <h2 class="blog-subtitle">An Example of Cool Animations with CSS and HTML</h2>
+    </header>
+
+    <!-- Article Image -->
+    <div class="article-image">
+      <img src="https://via.placeholder.com/900x400" alt="Blog Post Image">
+    </div>
+
+    <section class="blog-meta">
+      <p class="author">Author: <span>John Doe</span></p>
+      <p class="date-time">Published: <span id="publish-date"></span></p>
+    </section>
+
+    <section class="blog-content">
+      <div class="intro">
+        <p>Welcome to my blog post! This post is about showcasing how we can use pure CSS and HTML to create a beautiful and interactive blog layout with smooth animations.</p>
+      </div>
+
+      <div class="content-body">
+        <p>Animations are a great way to engage readers and make content more dynamic. In this post, we’ll demonstrate a few animation techniques that can be applied to HTML elements. We will animate the title, subtitle, and paragraphs to give the page a lively feeling.</p>
+
+        <div class="read-more-content" style="display: none;">
+          <p>In addition to the above techniques, we'll also explore ways to add interactivity to web pages using JavaScript. By combining CSS animations and JavaScript functionality, we can create seamless experiences that feel natural and intuitive.</p>
+        </div>
+
+        <button class="cta-btn" onclick="toggleReadMore()">Read More</button>
+      </div>
+
+      <footer class="blog-footer">
+        <p>&copy; 2024 My Fancy Blog. All rights reserved.</p>
+      </footer>
+    </section>
+
+    <!-- Social Media Share Buttons -->
+    <div class="social-share">
+      <p>Share this post:</p>
+      <div class="social-icons">
+        <a href="#" class="social-icon">Facebook</a>
+        <a href="#" class="social-icon">Twitter</a>
+        <a href="#" class="social-icon">LinkedIn</a>
+      </div>
+    </div>
+
+    <!-- View Other Blog Posts Section -->
+    <section class="other-blog-posts">
+      <h3>View Other Blog Posts</h3>
+      <div class="other-posts-list">
+        <div class="other-post">
+          <img src="https://via.placeholder.com/200x100" alt="Post Image">
+          <a href="#">Blog Post 1</a>
+          <p class="preview-text">This is a preview of the first blog post. It talks about amazing web development techniques...</p>
+          <a href="#" class="read-more-link">Read More</a>
+        </div>
+        <div class="other-post">
+          <img src="https://via.placeholder.com/200x100" alt="Post Image">
+          <a href="#">Blog Post 2</a>
+          <p class="preview-text">In this post, we dive into the world of front-end frameworks, comparing popular choices...</p>
+          <a href="#" class="read-more-link">Read More</a>
+        </div>
+        <div class="other-post">
+          <img src="https://via.placeholder.com/200x100" alt="Post Image">
+          <a href="#">Blog Post 3</a>
+          <p class="preview-text">A deep dive into CSS Grid and Flexbox to build modern, responsive layouts...</p>
+          <a href="#" class="read-more-link">Read More</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- JavaScript to Auto-generate Date and Time -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var dateElement = document.getElementById('publish-date');
+      var currentDate = new Date();
+
+      // Format the date and time in a readable format
+      var formattedDate = currentDate.toLocaleString('en-US', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric',
+        hour12: true
+      });
+
+      // Insert the formatted date into the placeholder
+      dateElement.textContent = formattedDate;
+    });
+
+    function toggleReadMore() {
+      var content = document.querySelector('.read-more-content');
+      var button = document.querySelector('.cta-btn');
+
+      if (content.style.display === 'none') {
+        content.style.display = 'block';
+        button.textContent = 'Read Less';
+      } else {
+        content.style.display = 'none';
+        button.textContent = 'Read More';
+      }
+    }
+  </script>
+</body>
+</html>
