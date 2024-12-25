@@ -618,6 +618,53 @@ section,
   color: var(--accent-color);
 }
 
+/* WHATSAPP BUTTON starts here*/
+/* Basic styling for the button */
+.whatsapp-button {
+  display: inline-flex;
+  align-items: center;
+  background-color: #25D366;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  border: none; /* Remove default button borders */
+}
+
+/* WhatsApp icon style */
+.whatsapp-button i {
+  margin-right: 10px; /* Space between icon and text */
+}
+
+/* Hover effect */
+.whatsapp-button:hover {
+  background-color: #128C7E;
+}
+
+/* Media query for mobile devices */
+@media (max-width: 480px) {
+  .whatsapp-button {
+      padding: 10px;
+      font-size: 24px; /* Icon size will be larger on mobile */
+      justify-content: center; /* Center the icon */
+  }
+
+  .whatsapp-button span {
+      display: none !important; /* Hide the text on mobile */
+  }
+
+  .whatsapp-button i {
+      font-size: 30px; /* Increase icon size on mobile */
+  }
+}
+/* Whatsapp button ends here */
+
+
 @media (max-width: 768px) {
   .hero h2 {
     font-size: 32px;
@@ -1440,4 +1487,36 @@ body {
   position: absolute; /* Absolute positioning */
   width: 1px; /* Width */
   height: 1px; /* Height */
+}
+
+
+
+
+
+
+/* Default link style */
+.services-list a {
+  color: #333;              /* Default link color */
+  text-decoration: none;
+  padding: 10px 15px;
+  display: block;
+  border-radius: 4px;
+}
+
+/* Active state styling */
+.services-list a.active,
+.services-list a:focus {
+  color: #007bff;           /* Active link color */
+  background-color: #f0f8ff; /* Light background to distinguish the active link */
+}
+
+/* Hover effect */
+.services-list a:hover {
+  color: #007bff;
+  background-color: #f9f9f9; /* Hover background */
+}
+
+/* Ensure that the active link retains its styling even on hover */
+.services-list a.active:hover {
+  background-color: #f0f8ff; /* Keep the same background for the active link */
 }
