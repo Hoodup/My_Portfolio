@@ -279,10 +279,14 @@ function sendMessage() {
 // Function to handle the visibility of the text based on screen width
 function checkScreenSize() {
   const span = document.querySelector('.wh'); // Select the span with text
+  const button = document.querySelector('.whatsapp-button'); // Select the button
+
   if (window.innerWidth <= 480) {
-      span.style.display = 'none'; // Hide text on mobile
+      span.style.display = 'none'; // Initially hide the text on mobile
+      button.classList.remove('show-text'); // Hide text if mobile
   } else {
       span.style.display = 'inline'; // Show text on larger screens
+      button.classList.add('show-text'); // Show text animation if larger screen
   }
 }
 
@@ -291,3 +295,10 @@ window.onload = checkScreenSize;
 
 // Add event listener to update on window resize
 window.onresize = checkScreenSize;
+
+// Add event listener to toggle text visibility
+const whatsappButton = document.getElementById('whatsappButton');
+whatsappButton.addEventListener('click', function () {
+  const button = document.querySelector('.whatsapp-button');
+  button.classList.toggle('show-text');
+}); 
