@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Project | Portfolio Details</title>
+  <title>ML | Service Details</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -36,10 +36,11 @@
   ======================================================== -->
 </head>
 
-<body class="portfolio-details-page">
+<body class="service-details-page">
 
   <header id="header" class="header dark-background d-flex flex-column">
     <i class="header-toggle d-xl-none bi bi-list"></i>
+
     <div><!-- Add this button somewhere in your header or main navigation -->
       <!-- Add this switch component somewhere in your header or main navigation -->
       <label class="switch">
@@ -81,7 +82,7 @@
     <div class="social-links text-center">
       <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
       <a href="#" class="stack-overflow"><i class="bi bi-stack-overflow"></i></a>
-      <a href="https://github.com/Hoodup" class="github"><i class="bi bi-github"></i></a>
+      <a href="#" class="github"><i class="bi bi-github"></i></a>
       <a href="#" class="skype"><i class="bi bi-skype"></i></a>
       <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
     </div>
@@ -121,88 +122,100 @@
     <!-- Page Title -->
     <div class="page-title dark-background">
       <div class="container d-lg-flex justify-content-between align-items-center">
-        <h1 class="mb-2 mb-lg-0">Portfolio Details</h1>
+        <h1 class="mb-2 mb-lg-0">Service Details</h1>
         <nav class="breadcrumbs">
           <ol>
             <li><a href="index.html">Home</a></li>
-            <li class="current">Portfolio Details</li>
+            <li class="current">Service Details</li>
           </ol>
         </nav>
       </div>
     </div><!-- End Page Title -->
 
-    <!-- Portfolio Details Section -->
-    <section id="portfolio-details" class="portfolio-details section">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-8">
-            <div class="portfolio-details-slider swiper init-swiper">
-
-              <script type="application/json" class="swiper-config">
-                {
-                  "loop": true,
-                  "speed": 600,
-                  "autoplay": {
-                    "delay": 5000
-                  },
-                  "slidesPerView": "auto",
-                  "pagination": {
-                    "el": ".swiper-pagination",
-                    "type": "bullets",
-                    "clickable": true
-                  }
-                }
-              </script>
-
-              <div class="swiper-wrapper align-items-center">
-
-                <div class="swiper-slide">
-                  <img src="assets/img/portfolio/app-1.jpg" alt="">
-                </div>
-
-                <div class="swiper-slide">
-                  <img src="assets/img/portfolio/product-1.jpg" alt="">
-                </div>
-
-                <div class="swiper-slide">
-                  <img src="assets/img/portfolio/branding-1.jpg" alt="">
-                </div>
-
-                <div class="swiper-slide">
-                  <img src="assets/img/portfolio/books-1.jpg" alt="">
-                </div>
-
-              </div>
-              <div class="swiper-pagination"></div>
-            </div>
-          </div>
-
-          <div class="col-lg-4">
-            <div class="portfolio-info" data-aos="fade-up" data-aos-delay="200">
-              <h3>Project information</h3>
-              <ul>
-                <li><strong>Category</strong>: Web design</li>
-                <li><strong>Client</strong>: ASU Company</li>
-                <li><strong>Project date</strong>: 01 March, 2020</li>
-                <li><strong>Project URL</strong>: <a href="#">www.example.com</a></li>
-              </ul>
-            </div>
-            <div class="portfolio-description" data-aos="fade-up" data-aos-delay="300">
-              <h2>Exercitationem repudiandae officiis neque suscipit</h2>
-              <p>
-                Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Voluptatem officia accusantium nesciunt est omnis tempora consectetur dignissimos. Sequi nulla at esse enim cum deserunt eius.
-              </p>
-            </div>
-          </div>
-
+    <!-- Service Details Section -->
+   <!-- Service Details Section -->
+<!-- Service Details Section -->
+<section id="service-details" class="service-details section">
+  <div class="container">
+    <div class="row gy-4">
+      
+      <!-- Service List (Clickable Links) -->
+      <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="services-list">
+          <a href="#" class="active" onclick="showServiceDetail('service1')">Machine Learning Models & Algorithms</a>
+          <a href="#" onclick="showServiceDetail('service2')">Predictive Modeling & Forecasting</a>
+          <a href="#" onclick="showServiceDetail('service3')">Natural Language Processing (NLP)</a>
+          <a href="#" onclick="showServiceDetail('service4')">Deep Learning & Neural Networks</a>
+          <a href="#" onclick="showServiceDetail('service5')">Reinforcement Learning</a>
         </div>
-
+        <h4>Transform Your Data with Advanced Machine Learning Techniques</h4>
+        <p>Our machine learning services provide the tools and models you need to uncover patterns and make data-driven predictions...</p>
       </div>
 
-    </section><!-- /Portfolio Details Section -->
+      <!-- Service Details (Initially Hidden) -->
+      <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+        <div id="service1" class="service-detail" style="display: block;">
+          <img src="assets/img/ml_models.jpg" alt="Machine Learning Models" class="img-fluid services-img">
+          <h3>Machine Learning Models & Algorithms</h3>
+          <p>We specialize in creating machine learning models that solve complex business problems, utilizing the latest algorithms and techniques.</p>
+          <ul>
+            <li><i class="bi bi-check-circle"></i> <span>Custom machine learning models tailored to your specific business needs.</span></li>
+            <li><i class="bi bi-check-circle"></i> <span>Algorithm selection and optimization for maximum performance.</span></li>
+            <li><i class="bi bi-check-circle"></i> <span>Model deployment and maintenance for continuous improvement.</span></li>
+          </ul>
+        </div>
+
+        <div id="service2" class="service-detail" style="display: none;">
+          <img src="assets/img/predictive_modeling.jpg" alt="Predictive Modeling" class="img-fluid services-img">
+          <h3>Predictive Modeling & Forecasting</h3>
+          <p>Our predictive modeling services help you forecast future trends and make informed business decisions with high accuracy.</p>
+          <ul>
+            <li><i class="bi bi-check-circle"></i> <span>Build predictive models to forecast key metrics and outcomes.</span></li>
+            <li><i class="bi bi-check-circle"></i> <span>Advanced regression, classification, and time-series forecasting techniques.</span></li>
+            <li><i class="bi bi-check-circle"></i> <span>Improve decision-making with accurate and reliable predictions.</span></li>
+          </ul>
+        </div>
+
+        <div id="service3" class="service-detail" style="display: none;">
+          <img src="assets/img/nlp.jpg" alt="Natural Language Processing" class="img-fluid services-img">
+          <h3>Natural Language Processing (NLP)</h3>
+          <p>Leverage NLP to process and analyze human language data, enabling your systems to understand, interpret, and generate human language.</p>
+          <ul>
+            <li><i class="bi bi-check-circle"></i> <span>Text analysis and sentiment detection for better understanding of customer feedback.</span></li>
+            <li><i class="bi bi-check-circle"></i> <span>Automated content generation and chatbots for enhanced user experience.</span></li>
+            <li><i class="bi bi-check-circle"></i> <span>Language translation and summarization for global reach.</span></li>
+          </ul>
+        </div>
+
+        <div id="service4" class="service-detail" style="display: none;">
+          <img src="assets/img/deep_learning.jpg" alt="Deep Learning & Neural Networks" class="img-fluid services-img">
+          <h3>Deep Learning & Neural Networks</h3>
+          <p>Explore deep learning to solve complex problems using neural networks, enhancing tasks like image recognition, speech recognition, and more.</p>
+          <ul>
+            <li><i class="bi bi-check-circle"></i> <span>Advanced neural network models for speech and image recognition.</span></li>
+            <li><i class="bi bi-check-circle"></i> <span>Convolutional Neural Networks (CNNs) and Recurrent Neural Networks (RNNs) for complex data processing.</span></li>
+            <li><i class="bi bi-check-circle"></i> <span>Real-time predictions with deep learning models deployed in production.</span></li>
+          </ul>
+        </div>
+
+        <div id="service5" class="service-detail" style="display: none;">
+          <img src="assets/img/reinforcement_learning.jpg" alt="Reinforcement Learning" class="img-fluid services-img">
+          <h3>Reinforcement Learning</h3>
+          <p>Our reinforcement learning techniques help machines learn to make decisions by interacting with the environment and receiving feedback.</p>
+          <ul>
+            <li><i class="bi bi-check-circle"></i> <span>Train intelligent agents to make autonomous decisions in complex environments.</span></li>
+            <li><i class="bi bi-check-circle"></i> <span>Use RL for applications like robotics, game AI, and personalized recommendations.</span></li>
+            <li><i class="bi bi-check-circle"></i> <span>Model optimization through reward-based learning techniques.</span></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- /Service Details Section -->
+
 
   </main>
 
