@@ -242,3 +242,52 @@ if (localStorage.getItem('dark-mode') === 'enabled') {
   document.addEventListener('scroll', navmenuScrollspy);
 
 })();
+
+function showServiceDetail(serviceId) {
+  // Remove 'active' class from all links
+  const links = document.querySelectorAll('.services-list a');
+  links.forEach(link => link.classList.remove('active'));
+
+  // Add 'active' class to the clicked link
+  const activeLink = Array.from(links).find(link => link.textContent.trim() === serviceId);
+  if (activeLink) {
+    activeLink.classList.add('active');
+  }
+
+  // Hide all service detail sections
+  const allServices = document.querySelectorAll('.service-detail');
+  allServices.forEach(service => {
+    service.style.display = 'none';
+  });
+
+  // Show the clicked service detail
+  const selectedService = document.getElementById(serviceId);
+  if (selectedService) {
+    selectedService.style.display = 'block';
+  }
+}
+
+
+
+function sendMessage() {
+  const phoneNumber = '+2349090777564'; // Replace with the recipient's WhatsApp number
+  const message = encodeURIComponent('Hello, I need help!'); // Replace with your desired message
+  const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
+  window.open(whatsappURL, '_blank');
+}
+
+// Function to handle the visibility of the text based on screen width
+function checkScreenSize() {
+  const span = document.querySelector('.wh'); // Select the span with text
+  if (window.innerWidth <= 480) {
+      span.style.display = 'none'; // Hide text on mobile
+  } else {
+      span.style.display = 'inline'; // Show text on larger screens
+  }
+}
+
+// Run checkScreenSize when the page loads
+window.onload = checkScreenSize;
+
+// Add event listener to update on window resize
+window.onresize = checkScreenSize;
