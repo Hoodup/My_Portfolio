@@ -625,41 +625,81 @@ section,
   align-items: center;
   background-color: #25D366;
   color: white;
-  padding: 10px 20px;
+  padding: 12px 24px;
   font-size: 16px;
   font-weight: bold;
-  border-radius: 10px;
+  border-radius: 3rem;  /* Makes the button round */
+  /* border-top-left-radius: 1rem; */
+  /* border */
   text-decoration: none;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
   text-align: center;
   border: none; /* Remove default button borders */
+  position: relative;
+  justify-content: center; /* Ensure the icon is centered */
+  overflow: hidden; /* Hides overflow for text animation */
 }
 
 /* WhatsApp icon style */
 .whatsapp-button i {
-  margin-right: 10px; /* Space between icon and text */
+  font-size: 24px; /* Icon size */
+  transition: transform 0.3s ease; /* Smooth transform for animation */
 }
 
-/* Hover effect */
+/* Hover effect for button */
 .whatsapp-button:hover {
   background-color: #128C7E;
+  transform: scale(1.1); /* Slight zoom-in effect */
 }
 
-/* Media query for mobile devices */
+/* Mobile (<= 480px) */
 @media (max-width: 480px) {
   .whatsapp-button {
       padding: 10px;
-      font-size: 24px; /* Icon size will be larger on mobile */
+      font-size: 18px; /* Smaller button size */
+      width: 50px; /* Set fixed width */
+      height: 50px; /* Set fixed height */
+      border-radius: 50px;
       justify-content: center; /* Center the icon */
   }
 
-  .whatsapp-button span {
-      display: none !important; /* Hide the text on mobile */
+  .whatsapp-button .wh {
+      display: block;
+      position: absolute;
+      opacity: 0;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      animation: popText 2s infinite; /* Apply animation */
+  }
+
+  /* Animation for the text */
+  @keyframes popText {
+      0% {
+          opacity: 0;
+          transform: translateX(-50%) translateY(20px);
+      }
+      50% {
+          opacity: 1;
+          transform: translateX(-50%) translateY(0);
+      }
+      100% {
+          opacity: 0;
+          transform: translateX(-50%) translateY(20px);
+      }
   }
 
   .whatsapp-button i {
-      font-size: 30px; /* Increase icon size on mobile */
+      font-size: 28px; /* Increase icon size */
+      transition: transform 0.3s ease; /* Smooth icon transformation */
+  }
+}
+
+/* Tablet and Desktop (> 480px) */
+@media (min-width: 481px) {
+  .whatsapp-button {
+      margin-top: 20px; /* Space at the top for larger screens */
   }
 }
 /* Whatsapp button ends here */
