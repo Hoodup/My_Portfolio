@@ -628,71 +628,54 @@ section,
   padding: 12px 24px;
   font-size: 16px;
   font-weight: bold;
-  border-radius: 3rem;  /* Makes the button round */
-  /* border-top-left-radius: 1rem; */
-  /* border */
+  border-radius: 3rem;  /* Keeps button round */
   text-decoration: none;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
-  text-align: center;
-  border: none; /* Remove default button borders */
   position: relative;
-  justify-content: center; /* Ensure the icon is centered */
-  overflow: hidden; /* Hides overflow for text animation */
+  justify-content: center;
+  text-align: center;
+  border: none;
 }
 
 /* WhatsApp icon style */
 .whatsapp-button i {
   font-size: 24px; /* Icon size */
-  transition: transform 0.3s ease; /* Smooth transform for animation */
-}
-
-/* Hover effect for button */
-.whatsapp-button:hover {
-  background-color: #128C7E;
-  transform: scale(1.1); /* Slight zoom-in effect */
 }
 
 /* Mobile (<= 480px) */
 @media (max-width: 480px) {
   .whatsapp-button {
-      padding: 10px;
-      font-size: 18px; /* Smaller button size */
-      width: 50px; /* Set fixed width */
-      height: 50px; /* Set fixed height */
-      border-radius: 50px;
-      justify-content: center; /* Center the icon */
-  }
-
-  .whatsapp-button .wh {
-      display: block;
-      position: absolute;
-      opacity: 0;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%) translateY(20px);
-      animation: popText 2s infinite; /* Apply animation */
-  }
-
-  /* Animation for the text */
-  @keyframes popText {
-      0% {
-          opacity: 0;
-          transform: translateX(-50%) translateY(20px);
-      }
-      50% {
-          opacity: 1;
-          transform: translateX(-50%) translateY(0);
-      }
-      100% {
-          opacity: 0;
-          transform: translateX(-50%) translateY(20px);
-      }
+      width: 50px; /* Fixed width */
+      height: 50px; /* Fixed height */
+      border-radius: 50%; /* Round button */
+      justify-content: center;
   }
 
   .whatsapp-button i {
       font-size: 28px; /* Increase icon size */
-      transition: transform 0.3s ease; /* Smooth icon transformation */
+  }
+
+  /* Text container for "Send a Message" */
+  .whatsapp-text-container {
+      position: absolute;
+      top: 50%;
+      left: 100%; /* Start to the right of the button */
+      transform: translateY(-50%); /* Center the text vertically */
+      opacity: 0;
+      background-color: #128C7E; /* WhatsApp green background */
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px; /* Round-cornered shape */
+      white-space: nowrap;
+      font-size: 14px;
+      transition: transform 0.5s ease, opacity 0.5s ease;
+  }
+
+  /* Animation to slide in and out */
+  .whatsapp-text-container.show {
+      transform: translateX(-110%); /* Slide the text in */
+      opacity: 1;
   }
 }
 
@@ -1241,7 +1224,28 @@ section,
 /*--------------------------------------------------------------
 # Portfolio Details Section
 --------------------------------------------------------------*/
-.portfolio-details .portfolio-details-slider img {
+/* Portfolio Details Section */
+#portfolio-details {
+  padding: 50px 0;
+}
+
+.portfolio-details .row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.portfolio-details .col-lg-8 {
+  flex: 0 0 65%;
+  max-width: 65%;
+}
+
+.portfolio-details .col-lg-4 {
+  flex: 0 0 35%;
+  max-width: 35%;
+}
+
+/* Portfolio Slider */
+.portfolio-details-slider img {
   width: 100%;
 }
 
@@ -1261,12 +1265,14 @@ section,
   background-color: var(--accent-color);
 }
 
-.portfolio-details .portfolio-info {
+/* Project Information */
+.portfolio-info {
   padding: 30px;
   box-shadow: 0px 0 30px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
 }
 
-.portfolio-details .portfolio-info h3 {
+.portfolio-info h3 {
   font-size: 22px;
   font-weight: 700;
   margin-bottom: 20px;
@@ -1274,30 +1280,149 @@ section,
   border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
 }
 
-.portfolio-details .portfolio-info ul {
+.portfolio-info ul {
   list-style: none;
   padding: 0;
   font-size: 15px;
 }
 
-.portfolio-details .portfolio-info ul li+li {
+.portfolio-info ul li+li {
   margin-top: 10px;
 }
 
-.portfolio-details .portfolio-description {
+/* Project Description, Questions, Steps, Key Takeaways */
+.portfolio-description, .portfolio-questions, .portfolio-steps, .portfolio-takeaways {
   padding-top: 30px;
 }
 
-.portfolio-details .portfolio-description h2 {
+.portfolio-description h2, .portfolio-questions h3, .portfolio-steps h3, .portfolio-takeaways h3 {
   font-size: 26px;
   font-weight: 700;
   margin-bottom: 20px;
 }
 
-.portfolio-details .portfolio-description p {
-  padding: 0;
+.portfolio-description p, .portfolio-questions ul, .portfolio-steps ol, .portfolio-takeaways ul {
   color: color-mix(in srgb, var(--default-color), transparent 30%);
 }
+
+.portfolio-description ul, .portfolio-questions ul, .portfolio-takeaways ul {
+  padding-left: 20px;
+}
+/* Styling the tool avatars */
+.portfolio-tools {
+  margin-top: 30px;
+}
+
+.portfolio-tools h4 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.tools-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;  /* Space between tool icons */
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* Tool Avatar Styles */
+.tool-avatar {
+  width: 40px; /* Default size for larger screens */
+  height: 40px;
+  border-radius: 50%; /* Keeps the image circular */
+  overflow: hidden; /* Ensures image stays within the circle */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Shadow for 3D effect */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tool-avatar img {
+  width: 100%; /* Image fills the circle */
+  height: 100%;
+  object-fit: cover; /* Ensures image does not distort */
+  padding: 5px; /* Padding around the image */
+}
+
+.tool-avatar:hover {
+  transform: translateY(-5px); /* Slight lift effect on hover */
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
+}
+
+/* Portfolio Container Flexbox */
+.portfolio-details .container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+/* Portfolio Slider (Left Side) */
+.col-lg-8 {
+  flex: 0 0 60%; /* Default 60% for larger screens */
+}
+
+/* Project Information (Right Side) */
+.col-lg-4 {
+  flex: 0 0 40%; /* Default 40% for larger screens */
+}
+
+/* Responsive Design for Tablets */
+@media (max-width: 768px) {
+  /* Adjust tool avatar sizes for tablets */
+  .tool-avatar {
+    width: 35px; /* Slightly smaller circles on tablets */
+    height: 35px;
+  }
+
+  .tools-container {
+    gap: 10px; /* Reduce gap between icons */
+  }
+
+  /* Ensure that both portfolio info and slider are stacked on tablets */
+  .col-lg-4, .col-lg-8 {
+    flex: 0 0 100%; /* Make both sections take up full width */
+  }
+
+  /* Add space between sections */
+  .portfolio-info {
+    margin-top: 20px; /* Space above the portfolio-info section */
+  }
+}
+
+/* Responsive Design for Mobile Phones */
+@media (max-width: 480px) {
+  /* Adjust tool avatar sizes for mobile phones */
+  .tool-avatar {
+    width: 30px; /* Smaller circles for mobile phones */
+    height: 30px;
+  }
+
+  .tools-container {
+    justify-content: center; /* Center icons on mobile */
+    gap: 5px; /* Further reduce gap on mobile */
+    flex-direction: column; /* Stack icons vertically */
+  }
+
+  /* Ensure that portfolio info and slider are stacked vertically */
+  .col-lg-4, .col-lg-8 {
+    flex: 0 0 100%; /* Stack both sections vertically */
+  }
+
+  /* Add space between sections */
+  .portfolio-info {
+    margin-top: 20px; /* Add space between slider and portfolio-info */
+  }
+}
+
+
+
+
+
+
+
 
 /*--------------------------------------------------------------
 # Service Details Section
@@ -1560,3 +1685,41 @@ body {
 .services-list a.active:hover {
   background-color: #f0f8ff; /* Keep the same background for the active link */
 }
+
+
+
+.kaggle-icon {
+      font-family: Arial, sans-serif; /* Use a clean font like Arial */
+      font-size: 48px;               /* Large font size */
+      font-weight: bold;             /* Make the letter bold */
+      color: #fff;                   /* White text */
+      background-color: #20b2aa;     /* Kaggle's teal color */
+      width: 100px;                  /* Size of the icon */
+      height: 100px;                 /* Make it square */
+      border-radius: 12px;           /* Rounded corners */
+      display: flex;                 /* Flexbox for centering */
+      justify-content: center;       /* Horizontally center the text */
+      align-items: center;           /* Vertically center the text */
+      text-align: center;            /* Align the letter in the center */
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    }
+
+
+
+    /* Caption for the slider */
+    .swiper-slide {
+      position: relative;
+    }
+    
+    .swiper-caption {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      color: white;
+      font-size: 18px;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 10px;
+      border-radius: 5px;
+      max-width: 80%;
+      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+    }
