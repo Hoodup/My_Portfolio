@@ -619,73 +619,133 @@ section,
 }
 
 /* WHATSAPP BUTTON starts here*/
-/* Basic styling for the button */
-.whatsapp-button {
-  display: inline-flex;
-  align-items: center;
-  background-color: #25D366;
-  color: white;
-  padding: 12px 24px;
-  font-size: 16px;
-  font-weight: bold;
-  border-radius: 3rem;  /* Keeps button round */
-  text-decoration: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+/* Container for the buttons (positioned relatively to place buttons on top of each other) */
+.button-container {
   position: relative;
-  justify-content: center;
-  text-align: center;
+  display: flex;
+  align-items: center; /* Aligns items vertically */
+  justify-content: flex-start; /* Aligns the content to the left */
+  width: 180px; /* Reduced width of the container to half */
+  min-width: 90px; /* Ensure it does not shrink below this width */
+  padding-left: 10px; /* Adds some space on the left side */
+}
+
+/* WhatsApp button (LinkedIn blue circular button) */
+.whatsapp-button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #0077b5; /* LinkedIn blue */
   border: none;
+  cursor: pointer;
+  position: relative; /* Ensures the button is positioned within the container */
+  z-index: 2; /* Keeps the WhatsApp button on top */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3), 0px 8px 15px rgba(0, 0, 0, 0.2); /* Added soft shadows around the button */
+  animation: buttonPulse 1s ease-in-out infinite; /* Pulsing effect */
+  animation-play-state: running; /* Ensures animation runs by default */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transition for hover effect */
 }
 
-/* WhatsApp icon style */
+/* WhatsApp icon inside the button */
 .whatsapp-button i {
-  font-size: 24px; /* Icon size */
+  color: white; /* Make the icon white */
+  font-size: 24px; /* Adjust the size of the icon */
 }
 
-/* Mobile (<= 480px) */
-@media (max-width: 480px) {
+/* Pulsing animation for the button */
+@keyframes buttonPulse {
+  0%, 100% {
+    transform: scale(1); /* Start and end at the normal size */
+  }
+  50% {
+    transform: scale(1.2); /* Grow to 120% of the original size at the peak of the pulse */
+  }
+}
+
+/* Stop the pulsing animation on hover */
+.whatsapp-button:hover {
+  animation-play-state: paused; /* Pause the animation when the button is hovered */
+  transform: scale(1); /* Make sure the button stays at the normal size on hover */
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4), 0px 12px 25px rgba(0, 0, 0, 0.3); /* Enhance shadows on hover */
+}
+
+/* Send a Message text (LinkedIn color) */
+.send-it {
+  background-color: #0077b5; /* LinkedIn blue */
+  color: white;
+  border-radius: 0 20px 20px 0; /* Rounded corners only on the right */
+  font-size: 14px;
+  font-weight: bold;
+  padding-left: 12px;
+  padding-right: 7px; /* Slightly increased height and horizontal padding */
+  padding-top: 4px; /* Added padding-top */
+  padding-bottom: 4px; /* Added padding-bottom */
+  display: inline-block;
+  width: auto; /* Allow width to adjust based on content */
+  height: auto; /* Allow height to adjust based on content */
+  line-height: 1.6; /* Ensures the text aligns well within the button */
+  position: absolute; /* Allows positioning relative to button */
+  top: 12px; /* Moves the text 12px from the top of the button */
+  left: 50%; /* Centers the text horizontally in the container */
+  transform: translateX(-90%); /* Adjusted to move the text further left */
+  z-index: 1; /* Initially behind the button */
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out; /* Smooth transition */
+  white-space: nowrap; /* Prevents text from wrapping */
+  overflow: hidden; /* Ensures no overflow */
+  max-width: 120px; /* Prevents text from stretching too far */
+}
+
+/* Show the Send a Message text on hover */
+.whatsapp-button:hover + .send-it {
+  opacity: 1; /* Make the text visible */
+  transform: translateX(-36%); /* Keep the text at its adjusted position */
+}
+
+/* Hide the 'Send a Message' text on mobile */
+@media (max-width: 768px) {
+  .send-it {
+    display: none;
+  }
+
   .whatsapp-button {
-      width: 50px; /* Fixed width */
-      height: 50px; /* Fixed height */
-      border-radius: 50%; /* Round button */
-      justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
   }
 
   .whatsapp-button i {
-      font-size: 28px; /* Increase icon size */
-  }
-
-  /* Text container for "Send a Message" */
-  .whatsapp-text-container {
-      position: absolute;
-      top: 50%;
-      left: 100%; /* Start to the right of the button */
-      transform: translateY(-50%); /* Center the text vertically */
-      opacity: 0;
-      background-color: #128C7E; /* WhatsApp green background */
-      color: white;
-      padding: 8px 16px;
-      border-radius: 20px; /* Round-cornered shape */
-      white-space: nowrap;
-      font-size: 14px;
-      transition: transform 0.5s ease, opacity 0.5s ease;
-  }
-
-  /* Animation to slide in and out */
-  .whatsapp-text-container.show {
-      transform: translateX(-110%); /* Slide the text in */
-      opacity: 1;
+    color: white; /* Make the icon white */
+    font-size: 18px; /* Adjust the size of the icon */
   }
 }
 
-/* Tablet and Desktop (> 480px) */
-@media (min-width: 481px) {
-  .whatsapp-button {
-      margin-top: 20px; /* Space at the top for larger screens */
-  }
-}
-/* Whatsapp button ends here */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 @media (max-width: 768px) {
@@ -1224,210 +1284,7 @@ section,
 /*--------------------------------------------------------------
 # Portfolio Details Section
 --------------------------------------------------------------*/
-/* Portfolio Details Section */
-#portfolio-details {
-  padding: 50px 0;
-}
 
-.portfolio-details .row {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.portfolio-details .col-lg-8 {
-  flex: 0 0 65%;
-  max-width: 65%;
-}
-
-.portfolio-details .col-lg-4 {
-  flex: 0 0 35%;
-  max-width: 35%;
-}
-
-/* Portfolio Slider */
-.portfolio-details-slider img {
-  width: 100%;
-}
-
-.portfolio-details .portfolio-details-slider .swiper-pagination {
-  margin-top: 20px;
-  position: relative;
-}
-
-.portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet {
-  width: 12px;
-  height: 12px;
-  background-color: color-mix(in srgb, var(--default-color), transparent 85%);
-  opacity: 1;
-}
-
-.portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet-active {
-  background-color: var(--accent-color);
-}
-
-/* Project Information */
-.portfolio-info {
-  padding: 30px;
-  box-shadow: 0px 0 30px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
-}
-
-.portfolio-info h3 {
-  font-size: 22px;
-  font-weight: 700;
-  margin-bottom: 20px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
-}
-
-.portfolio-info ul {
-  list-style: none;
-  padding: 0;
-  font-size: 15px;
-}
-
-.portfolio-info ul li+li {
-  margin-top: 10px;
-}
-
-/* Project Description, Questions, Steps, Key Takeaways */
-.portfolio-description, .portfolio-questions, .portfolio-steps, .portfolio-takeaways {
-  padding-top: 30px;
-}
-
-.portfolio-description h2, .portfolio-questions h3, .portfolio-steps h3, .portfolio-takeaways h3 {
-  font-size: 26px;
-  font-weight: 700;
-  margin-bottom: 20px;
-}
-
-.portfolio-description p, .portfolio-questions ul, .portfolio-steps ol, .portfolio-takeaways ul {
-  color: color-mix(in srgb, var(--default-color), transparent 30%);
-}
-
-.portfolio-description ul, .portfolio-questions ul, .portfolio-takeaways ul {
-  padding-left: 20px;
-}
-
-
-
-/* Styling the tool avatars */
-.portfolio-tools {
-  margin-top: 30px;
-}
-
-.portfolio-tools h4 {
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 15px;
-}
-
-.tools-container {
-  display: flex;
-  justify-content: space-between;
-  gap: 15px; /* Space between tool icons */
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-/* Tool Avatar Styles */
-.tool-avatar {
-  width: 40px; /* Default size for larger screens */
-  height: 40px;
-  border-radius: 50%; /* Keeps the image circular */
-  overflow: hidden; /* Ensures image stays within the circle */
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Shadow for 3D effect */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.tool-avatar img {
-  width: 100%; /* Image fills the circle */
-  height: 100%;
-  object-fit: cover; /* Ensures image does not distort */
-  padding: 5px; /* Padding around the image */
-}
-
-.tool-avatar:hover {
-  transform: translateY(-5px); /* Slight lift effect on hover */
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
-}
-
-
-
-
-
-
-
-/* hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh */
-
-
-
-
-/* For screens below 992px */
-@media (max-width: 991px) {
-  /* More specific selector: .container > .portfolio-details-slider and .portfolio-info */
-  .container > .portfolio-details-slider,
-  .container > .portfolio-info {
-    display: flex !important;  /* Force flexbox layout */
-    flex-direction: column;  /* Stack vertically */
-    gap: 20px;  /* Add spacing */
-    width: 100%;  /* Full width */
-  }
-
-  /* Portfolio Slider */
-  .container > .portfolio-details-slider {
-    width: 100% !important;  /* Make the slider full width */
-  }
-
-  .container > .portfolio-details-slider img {
-    width: 100% !important;  /* Ensure the image takes up the full width */
-    border-radius: 8px;
-  }
-
-  /* Portfolio Info */
-  .container > .portfolio-info {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 100% !important;  /* Make portfolio info take full width */
-  }
-
-  .container > .portfolio-info h3 {
-    margin-bottom: 20px;
-    font-size: 20px;
-  }
-
-  .container > .portfolio-info ul {
-    list-style-type: none;
-  }
-
-  .container > .portfolio-info ul li {
-    margin-bottom: 10px;
-  }
-
-  .container > .portfolio-info ul li strong {
-    font-weight: bold;
-  }
-
-  /* Portfolio Description */
-  .container > .portfolio-description {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    margin-top: 20px;
-  }
-
-  .container > .portfolio-description h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-}
 
 /* THE NEW UPDATE */
 
@@ -1570,12 +1427,13 @@ section,
 .tool-avatar-new {
   width: 40px;
   height: 40px;
-  border-radius: 50%;
+  border-radius: 50%; /* Circular container */
   overflow: hidden;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative; /* Ensures the positioning of the name is relative to this container */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -1586,10 +1444,30 @@ section,
   padding: 5px;
 }
 
-.tool-avatar-new:hover {
-  transform: translateY(-5px);
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+.tool-avatar-new .tool-name {
+  display: none; /* Initially hidden */
+  position: absolute;
+  bottom: -20px; /* Position the name outside and below the avatar */
+  left: 50%;
+  transform: translateX(-50%); /* Center horizontally */
+  font-size: 10px; /* Tiny font size */
+  color: #fff; /* White text */
+  opacity: 0; /* Make the name invisible initially */
+  transition: opacity 0.3s ease, bottom 0.3s ease; /* Smooth transitions */
 }
+
+.tool-avatar-new:hover {
+  transform: translateY(-5px); /* Lift the avatar on hover */
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3); /* Add shadow on hover */
+}
+
+.tool-avatar-new:hover .tool-name {
+  display: block; /* Show the name when hovering over the tool */
+  opacity: 1; /* Make it visible */
+  bottom: -30px; /* Slightly adjust the position when hovered */
+}
+
+
 
 /* Media Queries for Tool Icons */
 @media (max-width: 991px) {
@@ -1613,7 +1491,8 @@ section,
   /* Portfolio Slider */
   .portfolio-details-slider-new img {
     width: 100%;
-    padding: 0 5%;
+    /* padding-left: 50px; Adjust this value as needed */
+    /* padding: 0 5%; */
   }
 
   .portfolio-details-new .portfolio-details-slider-new .swiper-pagination {
@@ -1653,6 +1532,15 @@ section,
     margin-bottom: 20px; /* Added margin-bottom to prevent touching project info */
   }
 
+
+  .portfolio-info-new h3, 
+  .portfolio-questions-new h3, 
+  .portfolio-steps-new h3, 
+  .portfolio-takeaways-new h3 {
+    font-size: 19px;
+  }
+
+
   .portfolio-description-new h2 {
     font-size: 24px;
     margin-bottom: 10px;
@@ -1684,9 +1572,16 @@ section,
     height: 30px;
   }
 
-  .portfolio-info-new h3,
-  .portfolio-description-new h2 {
+  .portfolio-info-new h3, 
+  .portfolio-questions-new h3, 
+  .portfolio-steps-new h3, 
+  .portfolio-takeaways-new h3 {
     font-size: 18px;
+  }
+
+
+  .portfolio-description-new h2 {
+    font-size: 20px;
   }
 
   /* Prevent Description from Touching Project Info */
@@ -1695,7 +1590,10 @@ section,
   }
 
   /* Responsive Padding for Smaller Screens */
-  .portfolio-description-new, .portfolio-questions-new, .portfolio-steps-new, .portfolio-takeaways-new {
+  .portfolio-description-new, 
+  .portfolio-questions-new, 
+  .portfolio-steps-new, 
+  .portfolio-takeaways-new {
     padding-right: 0; /* Removed 25% padding for smaller screens */
   }
 }
@@ -2000,9 +1898,6 @@ body {
       font-size: 48px;               /* Large font size */
       font-weight: bold;             /* Make the letter bold */
       color: #fff;                   /* White text */
-      background-color: #20b2aa;     /* Kaggle's teal color */
-      width: 100px;                  /* Size of the icon */
-      height: 100px;                 /* Make it square */
       border-radius: 12px;           /* Rounded corners */
       display: flex;                 /* Flexbox for centering */
       justify-content: center;       /* Horizontally center the text */
@@ -2013,23 +1908,25 @@ body {
 
 
 
-    /* Caption for the slider */
-    .swiper-slide {
-      position: relative;
-    }
-    
-    .swiper-caption {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      color: white;
-      font-size: 18px;
-      background-color: rgba(0, 0, 0, 0.5);
-      padding: 10px;
-      border-radius: 5px;
-      max-width: 80%;
-      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
-    }
+    /* Ensure swiper-slide is relative for positioning */
+.swiper-slide {
+  position: relative;
+}
+
+/* Modify the caption styling to place it on top of the image */
+.swiper-caption-new {
+  position: absolute;
+  bottom: 20px; /* 20px from the bottom of the swiper-slide */
+  left: 20px; /* 20px from the left of the swiper-slide */
+  color: white;
+  font-size: min(calc(1.5vw + 10px), 11px);
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  padding: 10px;
+  border-radius: 5px;
+  max-width: 80%;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+  z-index: 1; /* Ensure the caption is on top of the image */
+}
 
     .portfolio-image-container {
       position: relative;
@@ -2053,3 +1950,376 @@ body {
       text-align: center;
     }
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* General Footer Styling */
+#footer {
+  background-color: #2c3e50; /* Dark background */
+  color: #fff;
+  font-family: 'Arial', sans-serif;
+  padding: 40px 0;
+}
+
+#footer h5 {
+  font-family: 'ElephantW00';
+  font-size: 500px;
+  color: rgb(170, 248, 45);
+  font-weight: bold; /* Bold across all devices */
+}
+
+/* Get in Touch Section */
+#footer .social-links h5 {
+  font-size: 22px; /* Default font size */
+  font-weight: bold; /* Bold text for 'Get in Touch' */
+  margin-bottom: 10px;
+}
+
+#footer .social-links p {
+  font-size: 12px; /* Reduced font size for paragraph */
+  line-height: 1.4;
+  margin-bottom: 0; /* Remove margin-bottom to eliminate space between paragraphs */
+  max-width: 500px; /* Limit the paragraph width */
+}
+
+/* Container Styling */
+#footer .container {
+  max-width: 1200px;
+  margin: 0 auto; /* Center container horizontally */
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; /* Allow content to wrap on smaller screens */
+  padding: 0 150px; /* Add padding to the left and right on larger screens */
+}
+
+/* Social Links Styling */
+#footer .social-links {
+  flex: 1;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align content to the left */
+}
+
+/* Social Icon Styling */
+#footer .social-icons a {
+  display: inline-block;
+  margin: 4px 6px; /* Reduced margin between icons */
+  font-size: 20px; /* Reduced icon size */
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+#footer .social-icons a:hover {
+  transform: scale(1.1); /* Slight increase in size on hover */
+}
+
+/* Individual Icon Hover Effects */
+#footer .social-icons a.twitter:hover {
+  color: #1da1f2; /* Twitter blue */
+}
+
+#footer .social-icons a.stack-overflow:hover {
+  color: #f48024; /* Stack Overflow orange */
+}
+
+#footer .social-icons a.github:hover {
+  color: #333; /* GitHub black */
+}
+
+#footer .social-icons a.kaggle-icon:hover {
+  color: #00aff0; /* Kaggle blue */
+}
+
+#footer #kaggle-icon {
+  font-family: Arial, sans-serif; /* Use a clean font like Arial */
+  font-size: 20px;               /* Large font size */
+  font-weight: bold;             /* Make the letter bold */                 
+  background-color: #b22045;     /* Kaggle's teal color */
+  border-radius: 12px;           /* Rounded corners */
+  display: flex;                 /* Flexbox for centering */
+  justify-content: center;       /* Horizontally center the text */
+  align-items: center;           /* Vertically center the text */
+  text-align: center;            /* Align the letter in the center */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+#footer .social-icons a.linkedin:hover {
+  color: #0077b5; /* LinkedIn blue */
+}
+
+/* Footer Column Styling */
+#footer .footer-column {
+  flex: 0 0 100px;
+  display: flex;
+  justify-content: space-between; /* Align left and right */
+  align-items: center;
+  width: 100%;
+}
+
+#footer .footer-container-dribble {
+  position: relative; /* Ensures the <a> tag can be positioned absolutely */
+  background-color: #0A66C2; /* Default color for both icons */
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.4); /* Increased shadow drop */
+  transition: all 0.3s ease;
+  border-top-left-radius: 15px; /* Rounded top-left corner */
+  border-bottom-right-radius: 15px; /* Rounded bottom-right corner */
+}
+
+
+#footer .footer-container-email {
+  position: relative; /* Ensures the <a> tag can be positioned absolutely */
+  background-color: #0A66C2; /* Default color for  icon */
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.4); /* Increased shadow drop */
+  transition: all 0.3s ease;
+  border-top-left-radius: 15px; /* Rounded top-left corner */
+  border-bottom-right-radius: 15px; /* Rounded bottom-right corner */
+}
+
+#footer .footer-container-dribble a,
+#footer .footer-container-email a {
+  position: absolute; /* Make <a> tag fill the entire container */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center; /* Center the icon */
+  align-items: center;     /* Vertically center the icon */
+  text-decoration: none;   /* Remove underline from the <a> tag */
+}
+
+#footer .footer-container-dribble a,
+#footer .footer-container-email a {
+  color: #fff; /* Icon color */
+  font-size: 24px; /* Icon size */
+  transition: all 0.3s ease;
+}
+
+/* Hover effect */
+#footer .footer-container-dribble:hover,
+#footer .footer-container-email:hover {
+  box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.5); /* Sharp shadow with more offset */
+  transform: scale(1.1); /* Slight scale-up effect */
+}
+
+/* Margin between dribble and email icons */
+#footer .footer-container-dribble {
+  margin-right: 15px; /* Adjust the margin for spacing */
+}
+
+#footer .footer-container-email {
+  margin-left: 15px; /* Adjust the margin for spacing */
+}
+
+/* Responsive Design Adjustments */
+@media (max-width: 1024px) {
+  /* Keep footer as a two-column layout for tablets and smaller laptops */
+  #footer .container {
+    flex-direction: row;
+    align-items: center;
+    padding: 0 50px; /* Reduced padding on tablets */
+  }
+
+  #footer .social-links {
+    align-items: flex-start; /* Align social links to the left on tablets */
+    margin-bottom: 30px;
+  }
+
+  #footer .footer-column {
+    flex: 0 0 100px;
+    justify-content: space-evenly; /* Keep two columns */
+  }
+
+  #footer .footer-container-dribble,
+  #footer .footer-container-email {
+    width: 80px;
+    height: 80px;
+  }
+
+  #footer .social-icons a {
+    font-size: 22px; /* Slightly smaller icons */
+    margin: 8px 10px;
+  }
+
+  #footer .social-links h5 {
+    font-size: 30px; /* Smaller 'Get in Touch' size on tablets */
+  }
+
+  #footer .social-links p {
+    font-size: 12px; /* Adjust paragraph font size */
+  }
+
+  /* Dynamically reduce footer height and spacing */
+  #footer {
+    padding: 30px 0;
+  }
+
+  #footer .social-links p {
+    margin-bottom: 10px; /* Reduce space between paragraphs */
+  }
+
+  #footer .footer-column {
+    margin-bottom: 10px; /* Reduce margin at bottom of columns */
+  }
+
+  #footer .footer-container-dribble,
+  #footer .footer-container-email {
+    margin: 5px; /* Reduce margin between dribble and email icons */
+  }
+
+  #footer .social-icons a {
+    margin: 4px 5px; /* Reduced margin between icons */
+  }
+}
+
+@media (max-width: 552px) {
+  /* Single column footer for screens smaller than 553px */
+  #footer .container {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+
+  /* Centering content of social links in column 1 */
+  #footer .social-links {
+    align-items: center; /* Center the content */
+    text-align: center;  /* Align text to the center */
+  }
+
+  #footer .footer-column {
+    flex: 0 0 70px;
+    justify-content: center; /* Center all items */
+  }
+
+  /* Icon size and spacing adjustments for small screens */
+  #footer .footer-container-dribble,
+  #footer .footer-container-email {
+    width: 70px;
+    height: 70px;
+  }
+
+  #footer .footer-container-dribble a,
+  #footer .footer-container-email a {
+    font-size: 18px;
+  }
+
+  #footer .social-links h5 {
+    font-size: 18px; /* Adjust heading for small screens */
+  }
+
+  #footer .social-links p {
+    font-size: 12px; /* Adjust paragraph font size */
+    line-height: 1.4;
+  }
+
+  /* Dynamically reduce footer height and spacing */
+  #footer {
+    padding: 15px 0; /* Reduce footer padding */
+  }
+
+  #footer .footer-column {
+    margin-bottom: 5px; /* Reduced bottom margin */
+  }
+
+  #footer .footer-container-dribble,
+  #footer .footer-container-email {
+    margin: 7px; /* Even less margin between dribble and email icons */
+  }
+
+  #footer .social-icons a {
+    margin: 2px 3px; /* Further reduced margin between icons */
+  }
+}
+
+/* Styling from 800px and above */
+@media (min-width: 800px) {
+  #footer .container {
+    flex-direction: row; /* Maintain row layout for screens from 800px and above */
+    justify-content: space-between;
+    padding: 0 150px; /* Add larger padding for more space */
+  }
+
+  #footer .social-links h5 {
+    font-size: 30px; /* Larger font size for 'Get in Touch' */
+  }
+
+  #footer .footer-column {
+    flex: 0 0 100px;
+    display: flex;
+    justify-content: space-between; /* Align left and right */
+    align-items: center;
+    width: 100%;
+  }
+
+  #footer .social-icons a {
+    font-size: 20px; /* Maintain icon size */
+    margin: 4px 6px;
+  }
+
+  #footer .footer-container-dribble,
+  #footer .footer-container-email {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media (min-width: 1200px) {
+  /* Make 'Get in Touch' much larger on larger screens */
+  #footer .social-links h5 {
+    font-size: 50px; /* Larger heading size for larger screens */
+  }
+}
