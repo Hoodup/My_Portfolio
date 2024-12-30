@@ -388,55 +388,55 @@ window.addEventListener('resize', adjustCaption);
 
 
 
-document.addEventListener("DOMContentLoaded", function () {
-  const form = document.getElementById('contact-form');
-  const submitButton = form.querySelector('button');
-  const loading = form.querySelector('.loading');
-  const errorMessage = form.querySelector('.error-message');
-  const successMessage = form.querySelector('.sent-message');
+// document.addEventListener("DOMContentLoaded", function () {
+//   const form = document.getElementById('contact-form');
+//   const submitButton = form.querySelector('button');
+//   const loading = form.querySelector('.loading');
+//   const errorMessage = form.querySelector('.error-message');
+//   const successMessage = form.querySelector('.sent-message');
 
-  // Get popup elements
-  const popup = document.getElementById('popup');
-  const popupMessage = document.getElementById('popup-message');
+//   // Get popup elements
+//   const popup = document.getElementById('popup');
+//   const popupMessage = document.getElementById('popup-message');
 
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
+//   form.addEventListener('submit', function (e) {
+//     e.preventDefault();
     
-    // Show loading state
-    loading.style.display = 'block';
-    errorMessage.style.display = 'none';
-    successMessage.style.display = 'none';
+//     // Show loading state
+//     loading.style.display = 'block';
+//     errorMessage.style.display = 'none';
+//     successMessage.style.display = 'none';
 
-    const formData = new FormData(form);
+//     const formData = new FormData(form);
 
-    // Use fetch to submit the form via AJAX (POST method)
-    fetch(form.action, {
-      method: 'POST',
-      body: formData
-    })
-    .then(response => {
-      if (response.ok) {
-        // Show success message
-        loading.style.display = 'none';
-        popupMessage.textContent = 'Your message has been sent successfully!';
-        popup.style.display = 'block';
-      } else {
-        throw new Error('Something went wrong');
-      }
-    })
-    .catch(error => {
-      // Show error message
-      loading.style.display = 'none';
-      errorMessage.textContent = 'There was an error submitting your form. Please try again.';
-      errorMessage.style.display = 'block';
+//     // Use fetch to submit the form via AJAX (POST method)
+//     fetch(form.action, {
+//       method: 'POST',
+//       body: formData
+//     })
+//     .then(response => {
+//       if (response.ok) {
+//         // Show success message
+//         loading.style.display = 'none';
+//         popupMessage.textContent = 'Your message has been sent successfully!';
+//         popup.style.display = 'block';
+//       } else {
+//         throw new Error('Something went wrong');
+//       }
+//     })
+//     .catch(error => {
+//       // Show error message
+//       loading.style.display = 'none';
+//       errorMessage.textContent = 'There was an error submitting your form. Please try again.';
+//       errorMessage.style.display = 'block';
 
-      popupMessage.textContent = 'Oops! Something went wrong. Please try again.';
-      popup.style.display = 'block';
-    });
-  });
+//       popupMessage.textContent = 'Oops! Something went wrong. Please try again.';
+//       popup.style.display = 'block';
+//     });
+//   });
 
-  // Close popup function
-  function closePopup() {
-    popup.style.display = 'none';
-  }
-});
+//   // Close popup function
+//   function closePopup() {
+//     popup.style.display = 'none';
+//   }
+// });
