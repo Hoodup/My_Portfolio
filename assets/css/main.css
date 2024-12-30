@@ -618,7 +618,7 @@ section,
   color: var(--accent-color);
 }
 
-/* WHATSAPP BUTTON starts here*/
+/* LINKEDIN BUTTON starts here*/
 /* Container for the buttons (positioned relatively to place buttons on top of each other) */
 .button-container {
   position: relative;
@@ -647,9 +647,9 @@ section,
 }
 
 /* WhatsApp icon inside the button */
-.whatsapp-button i {
+.whatsapp-button .icn {
   color: white; /* Make the icon white */
-  font-size: 24px; /* Adjust the size of the icon */
+  font-size: 25px; /* Adjust the size of the icon */;
 }
 
 /* Pulsing animation for the button */
@@ -712,9 +712,25 @@ section,
     width: 40px;
     height: 40px;
     border-radius: 50%;
+    background-color: #064d99;
   }
 
-  .whatsapp-button i {
+  .whatsapp-button .icn {
+    color: white; /* Make the icon white */
+    font-size: 16px; /* Adjust the size of the icon */
+  }
+}
+
+@media (max-width: 900px) {
+
+  .whatsapp-button {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #0557af;
+  }
+
+  .whatsapp-button .icn {
     color: white; /* Make the icon white */
     font-size: 18px; /* Adjust the size of the icon */
   }
@@ -2352,7 +2368,7 @@ body {
     align-items: center;
   }
   .popup-content {
-    background-color: white;
+    background-color: white; 
     padding: 20px;
     border-radius: 8px;
     text-align: center;
@@ -2361,7 +2377,7 @@ body {
     font-size: 18px;
     margin-bottom: 10px;
   }
-  button {
+  .pop-up {
     padding: 10px 20px;
     background-color: #007bff;
     color: white;
@@ -2371,5 +2387,5 @@ body {
   }
   button:hover {
     background-color: #0056b3;
-  }
+  } 
 
