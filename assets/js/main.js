@@ -440,3 +440,23 @@ window.addEventListener('resize', adjustCaption);
 //     popup.style.display = 'none';
 //   }
 // });
+
+
+
+// After the form is successfully submitted, show the success message and hide the form
+  const form = document.getElementById("contact-form");
+  const successMessage = document.getElementById("thank-you-message");
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    
+    // Simulate the form submission (you can add Netlify form handling here)
+    // Hide the form and show the success message
+    form.style.display = "none";
+    successMessage.style.display = "block";
+    
+    // Optionally, reset the form
+    setTimeout(() => {
+      form.reset();
+    }, 5000);
+  });
